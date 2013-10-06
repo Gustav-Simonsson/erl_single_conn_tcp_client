@@ -80,7 +80,7 @@ init([]) ->
     %% Never trust the user. Validate config.
     try
         %% TODO: change endpoints configure to your app using the client.
-        Endpoints = application:get_env(gs_util, tcp_endpoints),
+        {ok, Endpoints} = application:get_env(gs_util, tcp_endpoints),
         true = (is_list(Endpoints) andalso
                 length(Endpoints) > 0),
         Available =
@@ -99,9 +99,9 @@ init([]) ->
                     end
             end,
         true = lists:any(Available, Endpoints),
-        RI = el_app:get_env(gs_util, tcp_reconn_interval),
+        {ok, RI} = application:get_env(gs_util, tcp_reconn_interval),
         true = (is_integer(RI) and (RI > 500)),
-        CT = el_app:get_env(gs_util, tcp_conn_timeout),
+        {ok, CT} = application:get_env(gs_util, tcp_conn_timeout),
         true = (is_integer(CT) and (CT > 400)),
         send_reconnect(),
         {ok, #s{reconn_interval = RI,
