@@ -1,0 +1,22 @@
+Simple erlang single-connection TCP client
+====
+
+<a name='introduction'>
+
+Introduction
+------------
+
+Simple single-connection TCP client for queuing requests towards a single socket
+and having automatic reconnection. Also supports failover to multiple configured
+endpoints
+
+License is GNUBL.
+
+Copyright can be granted after providing author with beer.
+
+Usage
+-----
+
+Include as a rebar dependency and start the gen_server under your apps
+supervisor. The API is trivial; see typespecs in the module for the exported
+functions.

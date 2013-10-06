@@ -1,0 +1,13 @@
+{application, single_conn_tcp_client,
+    [
+        {description, ""},
+        {vsn, git},
+        {registered, []},
+        {applications, [
+            kernel,
+            stdlib,
+            lager
+        ]},
+        {env, []}
+    ]
+}.
